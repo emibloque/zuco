@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  web:
+    image: danieldent/nginx-ssl-proxy
+    restart: always
+    environment:
+      UPSTREAM: app:3000
+      SERVERNAME: your_domain.com
+      EXTRANAMES: www.your_domain.com
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /etc/letsencrypt
+
+  app:
+    image: emibloque/zuco
+    environment:
+      - BASE_URL=https://your_bucket
