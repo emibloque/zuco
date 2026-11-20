@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+  web:
+    volumes:
+      - ./nginx/cache:/etc/nginx/zuco-cache:ro
+      - nginx-cache:/nginx-cache
+
+volumes:
+  nginx-cache:
